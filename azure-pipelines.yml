@@ -16,18 +16,16 @@ variables:
   # Agent VM image name
   name:'MyAgentPool'
 
-  # Environment name
-  environmentName: 'python-cicd-3058'
+   environmentName:'python-cicd-3058'
 
-  # Project root folder. Point to the folder containing manage.py file.
-  projectRoot: $(System.DefaultWorkingDirectory)
+projectRoot: $(System.DefaultWorkingDirectory)
 
   # Python version: 3.7
   pythonVersion: '3.7'
-   stages:
+  stages:
     - stage: Build
   displayName: Build stage
-  jobs:
+jobs:
   - job: BuildJob
     pool:
       vmImage: $(vmImageName)
@@ -58,8 +56,7 @@ variables:
     - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       displayName: 'Upload package'
       artifact: drop
-
-- stage: Deploy
+    - stage: Deploy
   displayName: 'Deploy Web App'
   dependsOn: Build
   condition: succeeded()

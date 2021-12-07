@@ -14,7 +14,7 @@ variables:
   webAppName: 'python-cicd-3058'
 
   # Agent VM image name
-  vmImageName: 'swathi1'
+  name:'MyAgentPool'
 
   # Environment name
   environmentName: 'python-cicd-3058'
@@ -24,9 +24,8 @@ variables:
 
   # Python version: 3.7
   pythonVersion: '3.7'
-
-stages:
-- stage: Build
+   stages:
+    - stage: Build
   displayName: Build stage
   jobs:
   - job: BuildJob
